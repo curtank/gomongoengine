@@ -39,3 +39,12 @@ func collectionname(name string){
 }
 ```
 the collection in database will be a
+### fuzzy search with struct tag
+```go
+type A struct{
+  Name string `index:"unique",search:"fuzzy"`
+  ID int
+}
+database.Find(&A{Name:"bill"})
+//will find all A with name contain bill, zero or one
+```
