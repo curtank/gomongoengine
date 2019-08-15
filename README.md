@@ -18,7 +18,7 @@ type A struct{
 database.Find(&A{Name:"bill"})
 //will find all A with name bill
 ```
-### unique with struct tags
+### declare unique with struct tags
 ```go
 type A struct{
   Name string "index:"unique"
@@ -27,3 +27,15 @@ type A struct{
 database.Find(&A{Name:"bill"})
 //will find all A with name bill, zero or one
 ```
+### use struct name generate collection name
+```go
+type A struct{
+  Name string
+}
+database.Save(&A{})
+
+func collectionname(name string){
+  return string.LowerCase(name)
+}
+```
+the collection in database will be a
