@@ -18,6 +18,7 @@ type A struct{
 a:=A{Name:"bill"}
 database.Fill(&a)
 //will find one A with name bill and use it to fill a
+```
 ### find
 ```go
 type A struct{
