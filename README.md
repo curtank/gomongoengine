@@ -9,14 +9,25 @@ type A struct{
 }
 database.Save(&A{})
 ```
+### fill
+```go
+type A struct{
+  Name string
+  ID int
+}
+a:=A{Name:"bill"}
+database.Fill(&a)
+//will find one A with name bill and use it to fill a
 ### find
 ```go
 type A struct{
   Name string
   ID int
 }
-database.Find(&A{Name:"bill"})
-//will find all A with name bill
+a:=A{Name:"bill"}
+as:=[]*A{}
+database.Find(&a,as)
+//will find all A with name bill and use it to fill as
 ```
 ### declare unique with struct tags
 ```go
@@ -26,6 +37,7 @@ type A struct{
 }
 database.Find(&A{Name:"bill"})
 //will find all A with name bill, zero or one
+//also make sure a unique index in mongodb
 ```
 ### use struct name generate collection name
 ```go
@@ -38,7 +50,8 @@ func collectionname(name string){
   return string.LowerCase(name)
 }
 ```
-the collection in database will be a
+the collection in database will be a,and the colletionname func is not visable for the beginer,we provide a basic func 
+which transform "UserName" to "user_name" collection name 
 ### fuzzy search with struct tag
 ```go
 type A struct{
