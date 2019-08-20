@@ -10,7 +10,8 @@ import (
 )
 
 type ExampleStruct struct {
-	Name string
+	Name      string
+	GlobalLOC string
 }
 
 func TestSave(t *testing.T) {
@@ -20,8 +21,8 @@ func TestSave(t *testing.T) {
 	t.Error(err)
 	database := client.Database("testing")
 	c := Client{Database: database}
-	es := ExampleStruct{Name: "BOB"}
-	res := c.Save(&es)
+	es := ExampleStruct{Name: "BOB", GlobalLOC: "BJ"}
+	res := c.Save(ctx, &es)
 	t.Log(res)
 	t.Error("todo")
 
