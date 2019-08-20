@@ -1,12 +1,12 @@
 version: "3"
 
 services:
-  api:
-    image: golang_env_from_guardian:v1
+  gomgo:
+    image: golang_env_from_gomgo
     volumes:
       - ../:/go/src/github.com/curtank/gomongoengine
       - .:/trp
-    working_dir: /go/src/gd_server
+    working_dir: /go/src/github.com/curtank/gomongoengine
     network_mode: "host"
     command: "sh /trp/loop.sh"
     expose:

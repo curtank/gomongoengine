@@ -1,0 +1,1 @@
+docker commit scripts_gomgo_1  golang_env_from_gomgo
